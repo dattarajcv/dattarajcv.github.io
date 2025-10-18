@@ -16,6 +16,15 @@
     .accent { color: #0ea5a4; } /* teal-500 */
     .accent-bg { background-color: #ecfeff; } /* very light teal */
     .timeline-line { background: linear-gradient(180deg, #0ea5a4 0%, #06b6d4 100%); }
+    /* Expanded state */
+  .expanded .relative {
+    max-height: none;
+  }
+
+  /* Remove fade overlay when expanded */
+  .expanded .relative > div {
+    display: none;
+  }
   </style>
 </head>
 <body class="antialiased text-slate-800 bg-white">
@@ -176,24 +185,26 @@
             Automated end-to-end simulation setup — including topology creation, traffic generation, execution, result collection, and visualization — in compliance with ICCRG Internet draft guidelines. 
             This project became one of the first open-source contributions to ns-3 DCE enabling users to simulate and benchmark different TCP variants under real-kernel conditions.</p>
         </div>
-        <div class="p-4 border rounded-md">
-        <div class="p-4 border rounded-md">
-  <button 
-    onclick="this.nextElementSibling.classList.toggle('hidden')" 
-    class="font-semibold flex items-center justify-between w-full text-left">
-    TCP Evaluation Suite for ns-3
-    <span class="transition-transform duration-300 rotate-0 peer-open:rotate-90">▶</span>
-  </button>
 
-  <div class="mt-2 text-slate-600 hidden transition-all duration-300 ease-in-out">
-    Designed and implemented a TCP evaluation framework in ns-3 Direct Code Execution (DCE) to analyze multiple TCP variants available in the Linux kernel. 
-    Automated end-to-end simulation setup — including topology creation, traffic generation, execution, result collection, and visualization — in compliance with ICCRG Internet draft guidelines. 
-    This project became one of the first open-source contributions to ns-3 DCE enabling users to simulate and benchmark different TCP variants under real-kernel conditions.
+        <!-- delete below section -->
+        <div class="p-4 border rounded-md cursor-pointer transition-all duration-300 hover:shadow-md" 
+     onclick="this.classList.toggle('expanded')">
+  <h3 class="font-semibold">TCP Evaluation Suite for ns-3</h3>
+
+  <!-- Description container -->
+  <div class="relative overflow-hidden max-h-20 text-slate-600 mt-2 transition-all duration-500 ease-in-out">
+    <p>
+      Designed and implemented a TCP evaluation framework in ns-3 Direct Code Execution (DCE) to analyze multiple TCP variants available in the Linux kernel. 
+      Automated end-to-end simulation setup — including topology creation, traffic generation, execution, result collection, and visualization — in compliance with ICCRG Internet draft guidelines. 
+      This project became one of the first open-source contributions to ns-3 DCE enabling users to simulate and benchmark different TCP variants under real-kernel conditions.
+    </p>
+
+    <!-- Fading overlay -->
+    <div class="absolute bottom-0 left-0 w-full h-10 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
   </div>
 </div>
 
-</div>
-
+        <!-- delete above section -->
       </div>
     </section>
 
