@@ -328,23 +328,32 @@
             });
         });
     </script>
-    <script>
-        function calculateExperience() {
-            const startDate = new Date(2017, 7); // August 2017 (0-indexed month)
-            const now = new Date();
+   <script>
+function calculateExperience() {
+    const startDate = new Date(2017, 7); // Aug 2017
+    const now = new Date();
 
-            let years = now.getFullYear() - startDate.getFullYear();
-            let months = now.getMonth() - startDate.getMonth();
+    let years = now.getFullYear() - startDate.getFullYear();
+    let months = now.getMonth() - startDate.getMonth();
 
-            if (months < 0) {
-                years--;
-                months += 12;
-            }
+    if (months < 0) {
+        years--;
+        months += 12;
+    }
 
-            return `${years}.${months} years`;
-        }
-        document.getElementById("experience-value").innerText = calculateExperience();
-    </script>
+    return `${years}.${months} years`;
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const exp = calculateExperience();
+
+    const stat = document.getElementById("experience-value");
+    const hero = document.getElementById("experience-hero");
+
+    if (stat) stat.innerText = exp;
+    if (hero) hero.innerText = exp;
+});
+</script>
 </body>
 
 </html>
