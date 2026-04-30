@@ -17,24 +17,6 @@
     <script>
         (function () { if (!window.chatbase || window.chatbase("getState") !== "initialized") { window.chatbase = (...arguments) => { if (!window.chatbase.q) { window.chatbase.q = [] } window.chatbase.q.push(arguments) }; window.chatbase = new Proxy(window.chatbase, { get(target, prop) { if (prop === "q") { return target.q } return (...args) => target(prop, ...args) } }) } const onLoad = function () { const script = document.createElement("script"); script.src = "https://www.chatbase.co/embed.min.js"; script.id = "8n2_XPFmrENHvPdOFPbxH"; script.domain = "www.chatbase.co"; document.body.appendChild(script) }; if (document.readyState === "complete") { onLoad() } else { window.addEventListener("load", onLoad) } })();
     </script>
-    <script>
-        function calculateExperience() {
-            const startDate = new Date(2017, 7); // August 2017 (0-indexed month)
-            const now = new Date();
-
-            let years = now.getFullYear() - startDate.getFullYear();
-            let months = now.getMonth() - startDate.getMonth();
-
-            if (months < 0) {
-                years--;
-                months += 12;
-            }
-
-            return `${years}.${months} years`;
-        }
-
-        document.getElementById("experience-value").innerText = calculateExperience();
-    </script>
     <style>
         /* small visual tweaks */
         .accent {
@@ -71,7 +53,7 @@
                 <h1 class="text-3xl md:text-4xl font-bold">Dattaraj C Vernekar</h1>
                 <p class="mt-1 text-slate-600">Senior Software Engineer — Java 21· Microservices · Cloud</p>
 
-                <p class="mt-4 text-slate-700 max-w-xl">Strategic Senior Software Engineer with 8+ years of experience
+                <p class="mt-4 text-slate-700 max-w-xl">Senior Software Engineer with <span id="experience-hero"></span> years of experience
                     in
                     application development, testing, and cloud migrations. Skilled at delivering high-availability
                     microservices, mentoring teams, and executing large-scale cloud migrations.</p>
@@ -345,9 +327,23 @@
                 document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
             });
         });
+    </script>
+    <script>
+        function calculateExperience() {
+            const startDate = new Date(2017, 7); // August 2017 (0-indexed month)
+            const now = new Date();
 
+            let years = now.getFullYear() - startDate.getFullYear();
+            let months = now.getMonth() - startDate.getMonth();
 
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
 
+            return `${years}.${months} years`;
+        }
+        document.getElementById("experience-value").innerText = calculateExperience();
     </script>
 </body>
 
